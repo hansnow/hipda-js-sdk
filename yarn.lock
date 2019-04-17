@@ -19,10 +19,10 @@
   resolved "http://registry.npm.taobao.org/@types/cheerio/download/@types/cheerio-0.22.10.tgz#780d552467824be4a241b29510a7873a7432c4a6"
   integrity sha1-eA1VJGeCS+SiQbKVEKeHOnQyxKY=
 
-"@types/got@^9.4.1":
-  version "9.4.1"
-  resolved "http://registry.npm.taobao.org/@types/got/download/@types/got-9.4.1.tgz#7479a3a321599b5e17647f3bd9d402b8c55bfee1"
-  integrity sha1-dHmjoyFZm14XZH872dQCuMVb/uE=
+"@types/got@^9.4.2":
+  version "9.4.2"
+  resolved "http://registry.npm.taobao.org/@types/got/download/@types/got-9.4.2.tgz#8d5bf4156fced9355fc2880f10570ff276962f28"
+  integrity sha1-jVv0FW/O2TVfwogPEFcP8naWLyg=
   dependencies:
     "@types/node" "*"
     "@types/tough-cookie" "*"

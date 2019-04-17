@@ -5,11 +5,10 @@ import * as got from 'got'
 import { CookieJar } from 'tough-cookie'
 import * as iconv from 'iconv-lite'
 import { UA } from './constants'
-import { gotClient } from './types'
 
 export default class HiPDA {
   cookieJar: CookieJar
-  request: gotClient
+  request: got.GotInstance<got.GotBodyFn<string>>
   constructor(serializedCookieJar?: string) {
     if (serializedCookieJar) {
       this.cookieJar = CookieJar.fromJSON(serializedCookieJar)
@@ -25,11 +24,8 @@ export default class HiPDA {
       },
       hooks: {
         afterResponse: [
-          (response: got.Response<string>) => {
-            const decodedBody = iconv.decode(
-              <Buffer>(<unknown>response.body),
-              'GBK'
-            )
+          response => {
+            const decodedBody = iconv.decode(<Buffer>response.body, 'GBK')
             response.body = decodedBody
             return response
           }
@@ -57,7 +53,7 @@ export default class HiPDA {
   }
   /**
    * getTreadList 获取帖子列表
-   * @param fid - 版块ID
+   * @param fid 版块ID
    */
   public async getTreadList(fid: string = '2'): Promise<string[]> {
     const resp = await this.request.get('/forumdisplay.php', {
@@ -82,5 +78,3 @@ export default class HiPDA {
     this.cookieJar = CookieJar.fromJSON(serializedCookieJar)
   }
 }
-
-
